@@ -5,3 +5,11 @@
 {% block placeholder %}
     <input type="text" name="request1_text" placeholder="Введите текст">
 {% endblock %}
+{% block input %}
+    {{ super() }}
+        <p>
+            <label for="input_data"></label>
+        <input type="text" name="request2_text" placeholder="Введите текст">
+        </p>
+
+{% endblock %}
