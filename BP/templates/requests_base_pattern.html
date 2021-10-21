@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>requests</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+{% block title %}
+<h1></h1>
+{% endblock %}
+<div class="input_field">
+    <form action="" method="post">
+        <p>
+            <label for="input_data"></label>
+            {% block placeholder %}
+
+            {% endblock %}
+
+        </p>
+    <p>
+        <button type="submit">Выполнить</button>
+    </p>
+    </form>
+</div>
+
+</body>
+</html>
