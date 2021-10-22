@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request
 from UserDatabase import work_with_db
 
 main = Blueprint('main', __name__, template_folder='./templates', static_folder='./static')
-dbconfig = {'host': 'localhost', 'port': 3306, 'user': 'root', 'password': "password", 'db': 'Lab1'}
+dbconfig = {'host': 'localhost', 'port': 3306, 'user': 'root', 'password': "password", 'db': 'new_schema'}
 
 
 @main.route('/')
@@ -16,7 +16,7 @@ def request1():
     if request.method == 'POST':
         text1 = request.form.get('request1_text')
         text2 = request.form.get('request2_text')
-        _SQL_ = ""
+        _SQL_ = "select * from new_schema.order where date between '%s' and '%s'"
         result = work_with_db(dbconfig, _SQL_, (text1, text2))
         return render_template('request_result.html', result=result)
 
@@ -27,7 +27,7 @@ def request1():
 def request2():
     if request.method == 'POST':
         text = request.form.get('request2_text')
-        _SQL_ = ""
+        _SQL_ = "select * from new_schema.room_cleaning where service_id ='%s'"
         result = work_with_db(dbconfig, _SQL_, text)
         return render_template('request_result.html',result=result)
 
